@@ -11,8 +11,8 @@ def sketch(image):
     sharp = cv2.filter2D(resize, -1, kernel)
     gray = cv2.cvtColor(sharp, cv2.COLOR_BGR2GRAY)
     inv = 255 - gray
-    blur=cv2.GaussianBlur(src=inv,ksize=(15,15),sigmaX=0,sigmaY=0)    
-    s=cv2.divide(gray,255-blur,scale=256)
+    blur = cv2.GaussianBlur(src = inv, ksize = (15, 15), sigmaX = 0, sigmaY = 0)
+    s = cv2.divide(gray, 255 - blur, scale = 256)
     return s
 
 
@@ -20,7 +20,7 @@ cap = cv2.VideoCapture(0)
 
 while True:
     ret, frame = cap.read()
-    cv2.imshow('live', frame)
+    cv2.imshow('live_frame', frame)
     cv2.imshow('sketh_frame', sketch(frame))
 
     if cv2.waitKey(1) == ord('q'):
